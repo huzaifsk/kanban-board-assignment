@@ -16,7 +16,8 @@ app.use(express.json());
 
 const allowedOrigins = process.env.CLIENT_URL 
   ? process.env.CLIENT_URL.split(',').map(url => url.trim())
-  : ['https://kanban-board-assignment-git-main-huzaif-projects.vercel.app',
+  : ['https://kanban-board-assignment-lake.vercel.app',
+    'https://kanban-board-assignment-git-main-huzaif-projects.vercel.app',
     'https://kanban-board-assignment-9zg6yr8ve-huzaif-projects.vercel.app',
     'http://localhost:5173', 'http://localhost:3000', 'http://localhost:5174'];
 
