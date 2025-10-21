@@ -16,7 +16,9 @@ app.use(express.json());
 
 const allowedOrigins = process.env.CLIENT_URL 
   ? process.env.CLIENT_URL.split(',').map(url => url.trim())
-  : ['http://localhost:5173', 'http://localhost:3000', 'http://localhost:5174'];
+  : ['https://kanban-board-assignment-git-main-huzaif-projects.vercel.app',
+    'https://kanban-board-assignment-9zg6yr8ve-huzaif-projects.vercel.app',
+    'http://localhost:5173', 'http://localhost:3000', 'http://localhost:5174'];
 
 const corsOptions = {
   origin: function (origin, callback) {
