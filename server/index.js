@@ -2,7 +2,7 @@
 const express = require("express");
 const http = require("http");
 const mongoose = require("mongoose");
-const cors = require("cors"); // Required for frontend connection
+const cors = require("cors");
 const socket = require("./socket");
 require("dotenv").config();
 
@@ -49,9 +49,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
-// Handle preflight requests
-app.options('*', cors(corsOptions));
 
 mongoose
   .connect(process.env.MONGO_URI)
