@@ -93,7 +93,7 @@ app.use((err, req, res, next) => {
 
 
 const PORT = process.env.PORT || 5001;
-// server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
-module.exports = app;
+// module.exports = app;
