@@ -21,6 +21,8 @@ const Dashboard = () => {
   // Modal states
   const [showAddModal, setShowAddModal] = useState(false);
   const [editingTask, setEditingTask] = useState(null);
+  const [isCreating, setIsCreating] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
   const [newTask, setNewTask] = useState({
     title: '',
     description: '',
@@ -71,7 +73,9 @@ const Dashboard = () => {
 
   const handleCreateTaskSubmit = useCallback(async (e) => {
     e.preventDefault();
+    setIsCreating(true);
     const success = await handleCreateTask(newTask);
+    setIsCreating(false);
     if (success) {
       handleCloseAddModal();
       fetchTasks();
@@ -104,11 +108,13 @@ const Dashboard = () => {
     e.preventDefault();
     if (!editingTask) return;
     
+    setIsUpdating(true);
     const success = await handleUpdateTask(editingTask._id, {
       title: editingTask.title,
       description: editingTask.description,
       status: editingTask.status
     });
+    setIsUpdating(false);
     
     if (success) {
       handleCloseEditModal();
@@ -168,6 +174,7 @@ const Dashboard = () => {
         onClose={handleCloseAddModal}
         onSubmit={handleCreateTaskSubmit}
         onChange={handleNewTaskChange}
+        isLoading={isCreating}
       />
 
       {/* Edit Task Modal */}
@@ -178,6 +185,7 @@ const Dashboard = () => {
         onClose={handleCloseEditModal}
         onSubmit={handleUpdateTaskSubmit}
         onChange={handleEditTaskChange}
+        isLoading={isUpdating}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Save, Plus, Edit2, Clock } from 'lucide-react';
+import { X, Save, Plus, Edit2, Clock, Loader2 } from 'lucide-react';
 
 const TaskModal = ({ 
   isOpen, 
@@ -7,7 +7,8 @@ const TaskModal = ({
   task, 
   onClose, 
   onSubmit, 
-  onChange 
+  onChange,
+  isLoading = false
 }) => {
   if (!isOpen) return null;
 
@@ -48,6 +49,7 @@ const TaskModal = ({
               placeholder="Enter task title..."
               required
               autoFocus
+              disabled={isLoading}
             />
           </div>
           
@@ -58,6 +60,7 @@ const TaskModal = ({
               onChange={(e) => onChange('description', e.target.value)}
               placeholder="Add more details..."
               rows="4"
+              disabled={isLoading}
             />
           </div>
           
@@ -66,6 +69,7 @@ const TaskModal = ({
             <select
               value={task.status || 'To Do'}
               onChange={(e) => onChange('status', e.target.value)}
+              disabled={isLoading}
             >
               <option value="To Do">📋 To Do</option>
               <option value="In Progress">⏳ In Progress</option>
@@ -113,13 +117,31 @@ const TaskModal = ({
           )}
           
           <div className="modal-actions">
-            <button type="button" className="btn-secondary" onClick={onClose}>
+            <button 
+              type="button" 
+              className="btn-secondary" 
+              onClick={onClose}
+              disabled={isLoading}
+            >
               <X size={18} />
               Cancel
             </button>
-            <button type="submit" className="btn-primary">
-              <Save size={18} />
-              {submitText}
+            <button 
+              type="submit" 
+              className="btn-primary" 
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 size={18} className="spinner" />
+                  {isEditMode ? 'Updating...' : 'Creating...'}
+                </>
+              ) : (
+                <>
+                  <Save size={18} />
+                  {submitText}
+                </>
+              )}
             </button>
           </div>
         </form>
