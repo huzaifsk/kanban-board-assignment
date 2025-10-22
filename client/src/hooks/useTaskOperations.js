@@ -24,6 +24,7 @@ export const useTaskOperations = (fetchTasks) => {
       }
       
       toast.success('Task created successfully!');
+      fetchTasks(); 
       return true;
     } catch (error) {
       console.error('Error creating task:', error);
@@ -51,6 +52,7 @@ export const useTaskOperations = (fetchTasks) => {
       }
       
       toast.success('Task updated successfully!');
+      fetchTasks(); 
       return true;
     } catch (error) {
       console.error('Error updating task:', error);
@@ -78,6 +80,7 @@ export const useTaskOperations = (fetchTasks) => {
       }
       
       toast.success('Task deleted successfully!');
+      fetchTasks(); 
       return true;
     } catch (error) {
       console.error('Error deleting task:', error);

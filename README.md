@@ -11,10 +11,7 @@ A modern, feature-rich Kanban board application with real-time updates, drag-and
 ## ✨ Features
 
 ### 🎨 Modern UI/UX
-- Glassmorphism design with gradient effects
 - SVG pattern background
-- Color-coded column headers (Blue/Orange/Green)
-- Responsive layout for all devices
 - Toast notifications for user feedback
 - User avatars with random colors
 
@@ -44,9 +41,8 @@ A modern, feature-rich Kanban board application with real-time updates, drag-and
 - **Permissions**: Read-only access for non-owners
 
 ### 🎯 Technical Highlights
-- Component optimization with React.memo
 - Custom hooks for code reusability
-- Modular architecture (8 components + 4 hooks)
+- Modular architecture
 - Production-ready error handling
 - Input validation with express-validator
 - CORS configuration for cross-origin requests
@@ -81,10 +77,10 @@ A modern, feature-rich Kanban board application with real-time updates, drag-and
    npm install
    cp .env.example .env.local
    # Edit .env.local with backend URL (http://localhost:5001)
-   npm run dev
+   nodemon index.js
    ```
 
-4. **Seed Admin User** (Optional)
+4. **Seed Admin User** (Mandatory for admin access)
    ```bash
    cd ../server
    npm run seed
@@ -103,9 +99,9 @@ kanban-board-assignment/
 ├── client/                          # React Frontend
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── Dashboard/          # 8 optimized components
+│   │   │   ├── Dashboard/          # Components
 │   │   │   └── UserAvatar/         # Avatar component
-│   │   ├── hooks/                  # 4 custom hooks
+│   │   ├── hooks/                  # Custom hooks
 │   │   ├── layouts/                # AuthLayout, MainLayout
 │   │   ├── pages/                  # Login, Register, Dashboard
 │   │   └── config/                 # API configuration
@@ -124,40 +120,13 @@ kanban-board-assignment/
 └── README.md                        # This file
 ```
 
-## 🌐 Deployment to Vercel
-
-### Option 1: Automated Deployment (Recommended)
-
-Follow the comprehensive guide: [VERCEL_DEPLOYMENT_GUIDE.md](./VERCEL_DEPLOYMENT_GUIDE.md)
-
-### Option 2: Quick Deploy
-
-#### Backend
-```bash
-cd server
-vercel
-# Follow prompts
-# Add environment variables: MONGO_URI, JWT_SECRET, CLIENT_URL, NODE_ENV
-vercel --prod
-```
-
-#### Frontend
-```bash
-cd client
-vercel
-# Follow prompts
-# Add environment variable: VITE_API_URL
-vercel --prod
-```
-
-See [PRODUCTION_CHECKLIST.md](./PRODUCTION_CHECKLIST.md) for complete checklist.
 
 ## 🔧 Environment Variables
 
 ### Backend (.env)
 ```bash
 MONGO_URI=mongodb+srv://username:password@cluster...
-JWT_SECRET=your_jwt_secret_key
+JWT_SECRET=not_your_idea
 CLIENT_URL=https://your-frontend.vercel.app
 NODE_ENV=production
 ```
@@ -240,83 +209,6 @@ VITE_API_URL=https://your-backend.vercel.app
 - Double-click task card to edit
 - ESC to close modals
 
-## 📊 Performance
-
-- **Frontend Bundle Size**: ~200 KB (gzipped)
-- **API Response Time**: < 500ms
-- **Real-time Latency**: < 100ms
-- **Health Check**: Every 5 seconds
-- **Component Re-renders**: Minimized with React.memo
-
-## 🔒 Security Features
-
-- [x] Password hashing (bcryptjs)
-- [x] JWT authentication with expiration
-- [x] Rate limiting on authentication
-- [x] Input validation and sanitization
-- [x] CORS protection
-- [x] Environment variable protection
-- [x] Error messages don't leak sensitive data
-- [x] MongoDB injection prevention
-
-## 🐛 Known Limitations
-
-1. **Socket.IO on Vercel**: Serverless functions have limitations with WebSocket connections
-   - Consider deploying backend to Railway/Render for full Socket.IO support
-   - Or implement polling as fallback
-
-2. **File Uploads**: Not implemented (future feature)
-
-3. **Bulk Operations**: Not available (future feature)
-
-## 🔮 Future Enhancements
-
-- [ ] Task comments
-- [ ] File attachments
-- [ ] Task categories/tags
-- [ ] Due dates and reminders
-- [ ] Bulk operations
-- [ ] Email notifications
-- [ ] Dark mode
-- [ ] Mobile app
-- [ ] Offline support
-- [ ] Task templates
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 👤 Author
-
-**Your Name**
-- GitHub: [@huzaifsk](https://github.com/huzaifsk)
-
-## 🙏 Acknowledgments
-
-- React team for React 19
-- Vercel for hosting platform
-- MongoDB for database
-- Socket.IO for real-time functionality
-- Lucide for beautiful icons
-
-## 📞 Support
-
-For deployment help, see:
-- [VERCEL_DEPLOYMENT_GUIDE.md](./VERCEL_DEPLOYMENT_GUIDE.md)
-- [PRODUCTION_CHECKLIST.md](./PRODUCTION_CHECKLIST.md)
-
-For issues, please open a GitHub issue.
-
----
 
 **Built with ❤️ using React, Node.js, and MongoDB**
 
-🚀 **Ready for Production Deployment on Vercel!**

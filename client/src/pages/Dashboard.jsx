@@ -74,8 +74,9 @@ const Dashboard = () => {
     const success = await handleCreateTask(newTask);
     if (success) {
       handleCloseAddModal();
+      fetchTasks();
     }
-  }, [newTask, handleCreateTask, handleCloseAddModal]);
+  }, [newTask, handleCreateTask, handleCloseAddModal, fetchTasks]);
 
   const handleEditTask = useCallback((task) => {
     setEditingTask({
@@ -111,8 +112,9 @@ const Dashboard = () => {
     
     if (success) {
       handleCloseEditModal();
+      fetchTasks();
     }
-  }, [editingTask, handleUpdateTask, handleCloseEditModal]);
+  }, [editingTask, handleUpdateTask, handleCloseEditModal, fetchTasks]);
 
   if (loading) {
     return (
